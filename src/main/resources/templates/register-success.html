@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Successful</title>
+  <link rel="stylesheet" th:href="@{/css/register.css}">
+</head>
+<body>
+  <div class="success-container">
+    <h2>Registration Successful!</h2>
+    <p>Your account has been created.</p>
+    <p><strong>Your generated password:</strong> <span th:text="${generatedPassword}"></span></p>
+    <a th:href="@{/}">Go to Login</a>
+  </div>
+</body>
+</html>

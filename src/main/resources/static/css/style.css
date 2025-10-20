@@ -1,0 +1,297 @@
+/* ===== Global ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom right, #fff4d2, #ffbb55);
+    color: #333;
+}
+
+/* ===== Main Container ===== */
+.main-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+/* ===== Welcome Text ===== */
+.welcome-text {
+    flex: 1;
+    text-align: center;
+}
+
+.welcome-text svg {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
+
+/* Multi-color glitter animation */
+@keyframes glitter {
+    0% { fill: #ff0000; }    /* red */
+    15% { fill: #ff7f00; }   /* orange */
+    30% { fill: #ffff00; }   /* yellow */
+    45% { fill: #00ff00; }   /* green */
+    60% { fill: #00ffff; }   /* cyan */
+    75% { fill: #0000ff; }   /* blue */
+    90% { fill: #8b00ff; }   /* violet */
+    100% { fill: #ff0000; }  /* loop back red */
+}
+
+.glitter-text {
+    animation: glitter 2s infinite;
+    stroke: #fff;
+    stroke-width: 1px;
+    filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 15px #ffd700) drop-shadow(0 0 20px #ff00ff);
+}
+
+/* ===== Login Section ===== */
+.login-section {
+    flex: 1;
+    background: #fffdf3;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 450px;
+
+    /* Shift login form further left */
+    margin-right: 100px; /* increased from 50px */
+}
+
+.login-section h2 {
+    color: #d97706;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.btn {
+    background: #d97706;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #b45309;
+}
+
+.links {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.links a {
+    color: #d97706;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #fff;
+    background-color: #dc3545;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 15px;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.login-note {
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 991px) {
+    .main-container {
+        flex-direction: column;
+        gap: 30px;
+        height: auto;
+        padding: 30px 20px;
+    }
+
+    .welcome-text svg {
+        max-width: 350px;
+    }
+
+    .login-section {
+        width: 100%;
+        max-width: 400px;
+        padding: 30px 20px;
+        margin-right: 0; /* remove margin on mobile */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*!* ===== Global ===== *!*/
+/*body {*/
+/*    font-family: 'Poppins', sans-serif;*/
+/*    margin: 0;*/
+/*    background: linear-gradient(to bottom right, #fff4d2, #ffbb55);*/
+/*    color: #333;*/
+/*}*/
+
+/*h1, h2 {*/
+/*    margin: 0;*/
+/*}*/
+
+/*!* ===== Layout ===== *!*/
+/*.main-container {*/
+/*    display: grid;*/
+/*    grid-template-columns: 1fr 1fr;*/
+/*    align-items: center;*/
+/*    justify-items: center;*/
+/*    height: 100vh;*/
+/*    padding: 20px;*/
+/*}*/
+
+/*!* ===== Welcome Text ===== *!*/
+/*.welcome-text {*/
+/*    text-align: center;*/
+/*    padding: 20px;*/
+/*}*/
+
+/*.welcome-text h1 {*/
+/*    font-size: 3rem;*/
+/*    color: #d97706;*/
+/*    text-shadow: 2px 2px #fef3c7;*/
+/*}*/
+
+/*.welcome-text p {*/
+/*    font-size: 1.2rem;*/
+/*    margin-top: 10px;*/
+/*}*/
+
+/*!* ===== Login Section ===== *!*/
+/*.login-section {*/
+/*    background: #fffdf3;*/
+/*    padding: 30px;*/
+/*    border-radius: 15px;*/
+/*    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);*/
+/*    width: 80%;*/
+/*    max-width: 400px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.login-section h2 {*/
+/*    color: #d97706;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.form-group {*/
+/*    margin-bottom: 15px;*/
+/*    text-align: left;*/
+/*}*/
+
+/*.form-group label {*/
+/*    display: block;*/
+/*    font-weight: 500;*/
+/*    margin-bottom: 5px;*/
+/*}*/
+
+/*.form-group input {*/
+/*    width: 100%;*/
+/*    padding: 10px;*/
+/*    border-radius: 8px;*/
+/*    border: 1px solid #ccc;*/
+/*}*/
+
+/*.btn {*/
+/*    background: #d97706;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    padding: 10px 20px;*/
+/*    border-radius: 25px;*/
+/*    cursor: pointer;*/
+/*    transition: background 0.3s;*/
+/*}*/
+
+/*.btn:hover {*/
+/*    background: #b45309;*/
+/*}*/
+
+/*.links {*/
+/*    margin-top: 15px;*/
+/*}*/
+
+/*.links a {*/
+/*    color: #d97706;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*.links a:hover {*/
+/*    text-decoration: underline;*/
+/*}*/
+
+/*!* ===== Responsive (mobile) ===== *!*/
+/*@media (max-width: 767px) {*/
+/*    .main-container {*/
+/*        grid-template-columns: 1fr;*/
+/*        height: auto;*/
+/*        padding: 40px 20px;*/
+/*    }*/
+
+/*    .welcome-text {*/
+/*        margin-bottom: 20px;*/
+/*    }*/
+
+/*    .welcome-text h1 {*/
+/*        font-size: 2rem;*/
+/*    }*/
+
+/*    .login-section {*/
+/*        width: 100%;*/
+/*        max-width: 350px;*/
+/*    }*/
+/*}*/
+
+
+
+
+

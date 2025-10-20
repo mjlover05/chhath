@@ -1,0 +1,311 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fff6d5, #ffe2b0);
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    min-height: 100vh;
+}
+
+h2 {
+    color: #333;
+    margin: 15px 0 20px 0;
+    font-size: 1.5em;
+}
+
+.layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Each section (A, B, C, D) */
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 140px;
+}
+
+.section h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.2em;
+    color: #444;
+    background: rgba(255,255,255,0.8);
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 2px solid #ffa500;
+    width: 100%;
+}
+
+/* Each vertical stack of 11 groups */
+.seat-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* One group (4 seats + image in center) */
+.seat-group {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.center-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.center-image img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+/* Seat positions around center */
+.seat {
+    position: absolute;
+    z-index: 2;
+}
+
+.seat-1 { top: 8px; left: 50%; transform: translateX(-50%); }
+.seat-2 { right: 8px; top: 50%; transform: translateY(-50%); }
+.seat-3 { bottom: 8px; left: 50%; transform: translateX(-50%); }
+.seat-4 { left: 8px; top: 50%; transform: translateY(-50%); }
+
+/* Seat buttons */
+button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    font-weight: 600;
+    font-size: 0.75em;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+button:hover:not(:disabled) {
+    transform: scale(1.15);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+/* Color logic */
+.available-btn {
+    background-color: #28a745; /* green */
+}
+
+.booked-btn {
+    background-color: #dc3545; /* red */
+    cursor: not-allowed;
+    opacity: 0.8;
+    transform: none !important;
+}
+
+/* Logout Button */
+.logout {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    text-decoration: none;
+    background: #ff4d4d;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9em;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: background 0.3s ease;
+}
+
+.logout:hover {
+    background: #ff3333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .layout {
+        gap: 10px;
+    }
+
+    .section {
+        min-width: 130px;
+    }
+
+    .seat-group {
+        width: 120px;
+        height: 120px;
+    }
+
+    button {
+        width: 34px;
+        height: 34px;
+        font-size: 0.7em;
+    }
+
+    .center-image img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .layout {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .section {
+        min-width: 45%;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        margin: 10px 0 15px 0;
+    }
+
+    .logout {
+        position: relative;
+        top: auto;
+        right: auto;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+}
+
+/* Ensure all seat numbers are visible */
+.seat form {
+    margin: 0;
+    padding: 0;
+}
+
+.seat button {
+    font-size: 0.7em;
+    line-height: 1;
+}
+
+/* Section spacing */
+.section:not(:last-child) {
+    border-right: 2px dashed #ffa500;
+    padding-right: 15px;
+}
+
+/* Booked seat number styling */
+.user-status strong {
+    font-size: 1.5em;       /* bigger */
+    font-weight: 700;       /* bold */
+    color: #dc3545;         /* bright red */
+    padding: 0 5px;
+}
+
+.user-status {
+    margin: 15px auto;
+    text-align: center;           /* center all content */
+    background: #fff8e1;
+    padding: 15px 25px;           /* a bit more padding for balance */
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.cancel-btn {
+    background: linear-gradient(135deg, #28a745, #1e7e34); /* green gradient */
+    color: white;
+    border: none;
+    padding: 10px 25px;       /* more horizontal padding for width */
+    min-width: 160px;          /* ensures button is wide enough for text */
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;       /* prevent text wrapping */
+}
+
+/* Hover effect */
+.cancel-btn:hover {
+    background: linear-gradient(135deg, #218838, #1a5e2d);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+
+
+
+/* Optional: smoother booked seat button */
+.seat .booked-btn {
+    font-size: 0.85em;
+    font-weight: 700;
+    color: #ffffff;
+    background: #e63946;
+    border: 2px solid #b71c1c;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    transition: all 0.2s ease-in-out;
+}
+
+.seat .booked-btn:hover {
+    transform: none; /* disable hover scale on booked seat */
+}
+
+
+
+
+/* Empty state for missing seats */
+/*.seat.empty button {*/
+/*    background-color: #6c757d;*/
+/*    cursor: not-allowed;*/
+/*    opacity: 0.5;*/
+/*}*/
+
+/*.cancel-btn {*/
+/*    background-color: #ff6b6b;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    padding: 6px 12px;*/
+/*    border-radius: 6px;*/
+/*    cursor: pointer;*/
+/*    font-weight: 600;*/
+/*}*/
+
+/*.cancel-btn:hover {*/
+/*    background-color: #ff4d4d;*/
+/*}*/
+
+/*.user-status {*/
+/*    margin: 15px auto;*/
+/*    text-align: center;*/
+/*    background: #fff8e1;*/
+/*    padding: 10px 20px;*/
+/*    border-radius: 10px;*/
+/*    display: inline-block;*/
+/*    box-shadow: 0 2px 4px rgba(0,0,0,0.2);*/
+/*}*/

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Seat Booking Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+<body>
+
+<a href="/logout" class="logout">Logout</a>
+<h2>Welcome to Chhath Puja Seat Booking</h2>
+
+<div class="user-status">
+    <div th:if="${bookedSeat != null}">
+        <p>You have booked <strong th:text="${bookedSeat.seatNumber}"></strong>.</p>
+        <form th:action="@{/dashboard/cancel}" method="post">
+            <button type="submit" class="cancel-btn">Cancel Seat</button>
+        </form>
+    </div>
+    <div th:if="${bookedSeat == null}">
+        <p>You have not booked any seat yet.</p>
+    </div>
+</div>
+<div th:if="${error}" class="error-msg" th:text="${error}"></div>
+
+<div class="layout">
+
+    <!-- 4 sections A-D -->
+    <div th:each="sectionNum : ${#numbers.sequence(0,3)}" class="section">
+
+        <h3 th:text="'Section ' + ${#strings.substring('ABCD', sectionNum, sectionNum+1)}"></h3>
+
+        <div class="seat-blocks">
+            <div th:each="groupNum : ${#numbers.sequence(0,10)}"
+                 th:if="${seats != null and (sectionNum * 44 + groupNum * 4) < seats.size()}"
+                 class="seat-group">
+
+                <!-- 4 seats -->
+                <div th:each="i : ${#numbers.sequence(1,4)}"
+                     th:with="seatIndex=${sectionNum * 44 + groupNum * 4 + i - 1}"
+                     th:if="${seats != null and seatIndex < seats.size()}">
+
+                    <div th:with="seat=${seats[seatIndex]}"
+                         th:class="'seat seat-' + ${i} + ' ' + (${seat.booked} ? 'booked' : 'available')">
+
+                        <form th:if="${!seat.booked and bookedSeat == null}" th:action="@{'/dashboard/book/' + ${seat.id}}" method="post">
+                            <button type="submit" th:text="${seat.seatNumber}" class="available-btn"></button>
+                        </form>
+
+                        <button th:if="${seat.booked}" th:text="${seat.seatNumber}" class="booked-btn" disabled></button>
+                    </div>
+                </div>
+
+                <div class="center-image">
+                    <img src="/images/statue.png" alt="Center Image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

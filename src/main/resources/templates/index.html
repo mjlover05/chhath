@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chhath Puja Login</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="main-container">
+  <!-- Left: Welcome Note -->
+  <div class="welcome-text">
+    <svg viewBox="0 0 1400 850">
+      <!-- Bigger Semi-circle path -->
+      <path id="semiCircle" d="M 100 700 A 600 600 0 0 1 1300 700" fill="transparent"/>
+
+      <!-- Semi-circle Hindi text -->
+      <text font-size="80" font-weight="800" class="glitter-text">
+        <textPath href="#semiCircle" startOffset="50%" text-anchor="middle">
+          छठ पूजा की हार्दिक शुभकामनाएँ
+        </textPath>
+      </text>
+
+      <!-- Center text above diameter -->
+      <text x="700" y="550" text-anchor="middle" font-size="70" font-weight="700" class="glitter-text">
+        SHANKAR HILL TOWN
+      </text>
+    </svg>
+  </div>
+
+  <!-- Right: Login Form -->
+  <div class="login-section">
+    <h2>Login</h2>
+
+    <form th:action="@{/login}" th:object="${user}" method="post" class="login-form">
+      <div class="form-group">
+        <label>Email (Username)</label>
+        <input type="email" th:field="*{email}" placeholder="Enter your email" required />
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" th:field="*{password}" placeholder="Enter password" required />
+      </div>
+
+      <button type="submit" class="btn">Login</button>
+
+      <div class="links">
+        <a th:href="@{/register}">New User? Register Here</a>
+      </div>
+
+      <div th:if="${error}" id="errorMessage" class="error-message" th:text="${error}"></div>
+
+      <p class="login-note">
+        <strong>Note:</strong> Your login username is your <em>email address</em>.<br>
+        Your password format is <em><strong>Name + Date + Month</strong></em> of your Date of Birth.<br>
+        (Example: If name is <strong>Manu Dubey</strong> and DOB is <strong>05-07-2001</strong>, password will be <strong>Ravi0507</strong>.)
+      </p>
+    </form>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const errorBox = document.getElementById("errorMessage");
+    if (errorBox) {
+      setTimeout(() => {
+        errorBox.style.opacity = "0";
+        setTimeout(() => errorBox.style.display = "none", 1000);
+      }, 3500);
+    }
+  });
+</script>
+
+</body>
+</html>
